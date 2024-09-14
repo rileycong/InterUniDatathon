@@ -44,3 +44,19 @@ df_cleaned_latlon['Month'] = df_cleaned_latlon['TransactionDate'].dt.month
 
 df_cleaned_latlon['weekday'] = df_cleaned_latlon['TransactionDate'].dt.day_name()
 
+
+#standard form genders
+
+gender_mapping = {
+    'fem': 'Female',
+    'Female': 'Female',
+    'she': 'Female',
+    'woman': 'Female',
+    'he': 'Male',
+    'man': 'Male',
+    'Male': 'Male',
+    'isnotfemale': 'Male',
+    'isnotmale': 'Female',
+}
+
+df_cleaned_latlon['Gender'] = df_cleaned_latlon['Gender'].map(gender_mapping).fillna('Other')
