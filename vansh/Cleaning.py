@@ -1,7 +1,6 @@
 import pandas as pd
-from datetime import datetime
 
-df = pd.read_csv('data/train.csv')
+df = pd.read_csv('../data/train.csv')
 
 print(df.info())
 
@@ -34,3 +33,14 @@ def standard_time(time_str):
 
 df_cleaned_latlon['TransactionTime'] = df_cleaned_latlon['TransactionTime'].apply(standard_time)
 print(df_cleaned_latlon.isnull().sum())
+
+
+#spliting month and date and adding weekday
+
+df_cleaned_latlon['TransactionDate'] = pd.to_datetime(df_cleaned_latlon['TransactionDate'], dayfirst=True)
+
+df_cleaned_latlon['date'] = df_cleaned_latlon['TransactionDate'].dt.day   
+df_cleaned_latlon['Month'] = df_cleaned_latlon['TransactionDate'].dt.month  
+
+df_cleaned_latlon['weekday'] = df_cleaned_latlon['TransactionDate'].dt.day_name()
+
