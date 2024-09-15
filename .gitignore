@@ -1,2 +1,5 @@
+# Ignore catboost
+Quan_Peter/catboost_info/
 /mlruns
 mlflow.db
+train_cleaned.csv
